@@ -122,3 +122,30 @@ if recommendations.empty:
 else:
     print("\n🎯 Recommended Courses:")
     print(recommendations)
+
+# Adding Mock API
+try:
+    from typing import List, Optional
+    from pydantic import BaseModel
+    from fastapi import FastAPI
+
+    # Reuse existing recommend_for_user and pandas df
+    app = FastAPI(title="Course Recommender API (Mock)")
+
+    class RecRequest(BaseModel):
+        queries: List[str]
+        top_n: Optional[int] = 10
+
+    @app.post("/recommend")
+    def recommend(req: RecRequest):
+        results = recommend_for_user(req.queries, n=req.top_n)
+        try:
+            import pandas as _pd  # local import
+            if isinstance(results, _pd.DataFrame):
+                return {"results": results.to_dict(orient="records")}
+        except Exception:
+            pass
+        return {"results": results}
+except Exception as _api_err:
+       _api_err  
+
