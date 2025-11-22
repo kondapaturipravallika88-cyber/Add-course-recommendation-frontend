@@ -17,7 +17,7 @@ export default function App() {
 
   const handleLogin = (name: string, email: string) => {
     setUser({ name, email });
-    setCurrentPage('questionnaire');
+    setCurrentPage('recommendations');
   };
 
   const handleSignup = (name: string, email: string) => {

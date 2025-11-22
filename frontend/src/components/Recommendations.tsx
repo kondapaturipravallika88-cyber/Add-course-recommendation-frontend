@@ -197,7 +197,7 @@ export function Recommendations({ userName, preferences, onLogout, onRetakeQuiz 
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-8 h-8 text-indigo-600" />
-            <span className="text-indigo-600">CourseMatch</span>
+            <span className="text-indigo-600">Course Recommendation</span>
           </div>
           <div className="flex items-center gap-4">
             <button
